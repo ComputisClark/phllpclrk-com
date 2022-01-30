@@ -1,3 +1,6 @@
+<?php ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,6 +9,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Phillip Clark - Web Developer / Graphic Designer</title>
+        
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -16,52 +20,33 @@
         <link href="css/main.css" rel="stylesheet"/>
     </head>
     <body>
+
+
+
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark darkRepeatBackground">
-            <div class="container px-lg-5">
+            <div class="container px-lg-5" >
                 <a class="navbar-brand" href="index.html">Phillip Clark's Portfolio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Portfolio Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a <?php if ($_SERVER['SCRIPT_NAME'] == "phllpclrk.com/index.php") { ?> 
+         class="nav-link active" 
+    <?php   } else {  ?>
+         class="nav-link"
+    <?php } ?>   aria-current="page" href="index.php">Home</a></li>
+                        <li class="nav-item"><a <?php if ($_SERVER['SCRIPT_NAME'] == "Resume.php") { ?> 
+         class="nav-link active" 
+    <?php   } else {  ?>
+         class="nav-link"
+    <?php } ?> href="Resume.php">Resume</a></li>
+                        <li class="nav-item"><a <?php if ($_SERVER['SCRIPT_NAME'] == "Contact.php") { ?> 
+         class="nav-link active" 
+    <?php   } else {  ?>
+         class="nav-link"
+    <?php } ?> href="Contact.php">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-       
-        <!-- Page Content-->
-       Things to come
-
-            
-          
-            
-            
-         <!--End Page Content-->    
-
-        <!-- Footer-->
-        <footer class="py-5">
-            <div class="container"><p class="m-0 text-center text-dark">Copyright &copy; Phillip Clark 2022</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-
-        <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-         s1.async=true;
-        s1.src='https://embed.tawk.to/61f4c2df9bd1f31184d9e8c9/1fqi1ieok';
-         s1.charset='UTF-8';
-         s1.setAttribute('crossorigin','*');
-         s0.parentNode.insertBefore(s1,s0);
-         })();
-        </script>
-         <!--End of Tawk.to Script-->
-
-    </body>
-</html>
+        <!-- End Navbar-->
