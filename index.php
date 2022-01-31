@@ -1,6 +1,6 @@
 <?php ?>
 
-<?php $title = "Home"; ?>
+<?php $title = 'Home'; ?>
 <?php include('Header.php'); ?>
 
 

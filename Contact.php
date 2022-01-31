@@ -1,7 +1,8 @@
 <?php ?>
 
-<?php $title = "Contact"; ?>
+<?php $title = 'Contact'; ?>
 <?php include('Header.php'); ?>
+
 
 <?php
 // Output messages
@@ -42,25 +43,28 @@ if (isset($_POST['email'], $_POST['subject'], $_POST['name'], $_POST['msg'])) {
 
 
    <!-- Page Content-->
+
+   <div class="form-group w-25">
+	   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 m-5 p-1" style="justify-content:space-around; align-content: center; ">
    <form class="contact" method="post" action="">
-			<h1>Contact Form</h1>
-			<div class="fields">
+			<h1 class="row row-cols-1">Contact Form</h1>
+			<div class="form-group">
 				<label for="email">
-					<i class="fas fa-envelope"></i>
-					<input id="email" type="email" name="email" placeholder="Your Email" required>
+					<input class="form-control" id="email" type="email" name="email" placeholder="Your Email" required>
 				</label>
 				<label for="name">
-					<i class="fas fa-user"></i>
-					<input type="text" name="name" placeholder="Your Name" required>
+					<input class="form-control" type="text" name="name" placeholder="Your Name" required>
 				<label>
-				<input type="text" name="subject" placeholder="Subject" required>
-				<textarea name="msg" placeholder="Message" required></textarea>
+				<input class="form-control" type="text" name="subject" placeholder="Subject" required>
+				<textarea class="form-control" name="msg" placeholder="Message" required></textarea>
 			</div>
 
             <?php if ($responses): ?>
 <p class="responses"><?php echo implode('<br>', $responses); ?></p>
 <?php endif; ?>
 			<input type="submit">
+		</div>			
+	</div>			
 
 
 

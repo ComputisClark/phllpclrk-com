@@ -1,7 +1,8 @@
 <?php ?>
 
-<?php $title = "Resume"; ?>
+<?php $title = 'Resume'; ?>
 <?php include('Header.php'); ?>
+
 
 
 
