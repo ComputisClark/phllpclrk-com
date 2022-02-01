@@ -43,31 +43,38 @@ if (isset($_POST['email'], $_POST['subject'], $_POST['name'], $_POST['msg'])) {
 
 
    <!-- Page Content-->
+<div class="container-sm mt-5 d-flex justify-content-center" style="width:200px">
+				
+		<div class="row">
+   				
+				<h1 class="text-center justify-content-center">Contact Me</h1><br>
+			
+				<form class="contact" method="post" action="">	
 
-   <div class="form-group w-25">
-	   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 m-5 p-1" style="justify-content:space-around; align-content: center; ">
-   <form class="contact" method="post" action="">
-			<h1 class="row row-cols-1">Contact Form</h1>
-			<div class="form-group">
 				<label for="email">
-					<input class="form-control" id="email" type="email" name="email" placeholder="Your Email" required>
+					<input class="form-control flex-fill" style="width:300px" id="email" type="email" name="email" placeholder="Your Email" required>
 				</label>
+
+
 				<label for="name">
-					<input class="form-control" type="text" name="name" placeholder="Your Name" required>
+					<input class="form-control flex-fill"style="width:300px"type="text" name="name" placeholder="Your Name" required>
 				<label>
-				<input class="form-control" type="text" name="subject" placeholder="Subject" required>
-				<textarea class="form-control" name="msg" placeholder="Message" required></textarea>
-			</div>
-
-            <?php if ($responses): ?>
-<p class="responses"><?php echo implode('<br>', $responses); ?></p>
-<?php endif; ?>
-			<input type="submit">
-		</div>			
-	</div>			
 
 
+				<input class="form-control flex-fill" style="width:300px" type="text" name="subject" placeholder="Subject" required>
 
+
+				<textarea class="form-control flex-fill" style="width:300px" name="msg" placeholder="Message" required></textarea>
+			
+
+            	<?php if ($responses): ?>
+				<p class="responses"><?php echo implode('<br>', $responses); ?></p>
+				<?php endif; ?>
+				<input type="submit">
+			
+			
+		</div>				
+</div>
 
 <!--End Page Content-->    
 
