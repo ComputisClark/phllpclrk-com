@@ -11,8 +11,8 @@
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center bg-dark text-white darkRepeatBackground">
                     <div class="m-4 m-lg-5">
                         <h1 class="display-5 fw-bold">A bit about me!</h1>
-                        <p class="fs-4">I am a self-learner that has been immersed with computers since the day's of booting Oregon Trail from 5.5" Floppy Disks. Website Development, Print & Web Graphics, Hardware & Software Repair, along with years of customer service experiance.</p>
-                        <a class="btn btn-primary btn-lg" href="resume.html" target="blank" data-toogle="tooltip" title="Resume opens in new tab">View My Resume</a>
+                        <p class="fs-4">I am a self-learner that has been immersed with computers & technology since the days of booting from 5.5" Floppy Disks. I now specialize in Website Development, Graphics for both Print & Web, and Hardware & Software Repair.</p>
+                        <a class="btn btn-light btn-lg" href="resume.html" target="blank" data-toogle="tooltip" title="Resume opens in new tab">View My Resume</a>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
               <div class="card-body">
                 <h4 class="card-title">Lil Dusty Auctions</h4>
                 <h5>Tech/Skills Used:</h5>
-                <p class="card-text">Assess Legacy SAAS , Find Bugs In Legacy SAAS, Implement New SAAS, Backup & Import Customer List, Mail Chimp</p>
+                <p class="card-text">Assess Legacy SAAS, Find Bugs In Legacy SAAS, Implement New SAAS, Backup & Import Customer List, Mail Chimp</p>
                 <a href="https://www.lildustyonline.com/" class="btn btn-light" target="_blank">View Site</a>
               </div>
             </div>
@@ -95,7 +95,7 @@
               <div class="card-body">
                 <h4 class="card-title">WooCommerce Demo</h4>
                 <h5>Tech/Skills Used:</h5>
-                <p class="card-text">Build & Launch WordPress, Customize Theme, WooCommerce, WordFence, Web Graphics, SSL Let's Enrypt</p>
+                <p class="card-text">Build & Launch WordPress, Customize Theme, WooCommerce, WordFence, Web Graphics, SSL Let's Encrypt</p>
                 <a href="https://recordlabel.computis.us/" class="btn btn-light" target="_blank">View Site</a>
               </div>
             </div>
@@ -107,7 +107,7 @@
               <div class="card-body">
                 <h4 class="card-title">Northern Sludge</h4>
                 <h5>Tech/Skills Used:</h5>
-                <p class="card-text">Build & Launch WordPress, Blog Creation, Yaost, WordFence, Customize PHP, Child Theme, Customize Theme</p>
+                <p class="card-text">Build & Launch WordPress, Blog Creation, Yoast, WordFence, Customize PHP, Child Theme, Customize Theme</p>
                 <a href="https://northernsludge.com/" class="btn btn-light" target="_blank">View Site</a>
               </div>
             </div>
@@ -179,7 +179,7 @@
               <div class="card-body">
                 <h4 class="card-title">Clark's Cab</h4>
                 <h5>Tech/Skills Used:</h5>
-                <p class="card-text">Build & Lauch WordPress, Customize Theme, Google Adwords, Google Adwords PPC Campaigns</p>
+                <p class="card-text">Build & Launch WordPress, Customize Theme, Google Adwords, Google Adwords PPC Campaigns</p>
                 <a href="https://web.archive.org/web/20161025094321/http://www.clarkscab.com/" class="btn btn-light" target="_blank">View Site</a>
               </div>
             </div>
@@ -192,7 +192,7 @@
               <div class="card-body">
                 <h4 class="card-title">Physical Media</h4>
                 <h5>Tech/Skills Used:</h5>
-                <p class="card-text">Cd Template Layouts, Screen Printing & Seperations, Layouts, Coordinate Production, Poster Layouts</p>
+                <p class="card-text">CD Template Layouts, Screen Printing & Separations, Layouts, Coordinate Production, Poster Layouts</p>
                 <a href="resume.html" class="btn btn-light" target="_blank">View Resume</a>
               </div>
             </div>
