@@ -1,0 +1,11 @@
+# robots.txt – phllpclrk.com
+User-agent: *
+Allow: /
+
+# Disallow search pages or temporary content
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /404.php
+
+# Sitemap reference
+Sitemap: https://phllpclrk.com/sitemap.xml
