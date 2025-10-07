@@ -1,64 +1,308 @@
-/* Added Custom Styles for Phllpclrk.com */
+/* =====================================================
+   phllpclrk.com – Main Stylesheet (Monochrome + POP)
+   ===================================================== */
 
-body { 
-
-    background-image: url('../images/double-bubble-outline.png');
-    background-repeat: repeat;
-
+/* ===================== Base ===================== */
+body {
+  background-image: url('../images/double-bubble-outline.png');
+  background-repeat: repeat;
+  color: #f2f2f2;
+  background-color: #0e0e0e;
 }
 
 .darkRepeatBackground {
-
-    background-image: url('../images/double-bubble-dark.png');
-    background-repeat: repeat;
-
+  background-image: url('../images/double-bubble-dark.png');
+  background-repeat: repeat;
+  background-color: #111;
 }
 
+/* Normalize images */
+img,
+.card-img-top {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-/* Form Styles */
-
-
+/* ===================== Form Styles ===================== */
 form {
-
-    margin-top: 50px;
-    transition: all 4s ease-in-out;
+  margin-top: 50px;
+  transition: all 4s ease-in-out;
 }
 
 .form-control {
-
-    width: 600px;
-    background: black;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid gray;
-    color: #fff;
-    font-size: 18px;
-    margin-bottom: 16px;
+  width: 100%;
+  max-width: 600px;
+  background: #000;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #555;
+  color: #eee;
+  font-size: 18px;
+  margin-bottom: 16px;
 }
 
 input {
-
-    height: 45px;
-
-
+  height: 45px;
 }
 
 form .submit {
-
-    background: #ff5722;
-    border-color: transparent;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    height: 50px;
-    margin-top: 20px;
-    
+  background: #222;
+  border: 1px solid #555;
+  color: #eee;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  height: 50px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
 }
 
 form .submit:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #888;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+}
 
-    background-color: #f44336;
-    cursor: pointer;
+/* ===================== Footer ===================== */
+footer.darkRepeatBackground {
+  position: relative;
+  color: #eaeaea;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
 
+footer.darkRepeatBackground::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.40));
+  z-index: 0;
+}
+
+footer.darkRepeatBackground > * {
+  position: relative;
+  z-index: 1;
+}
+
+footer.darkRepeatBackground a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+footer.darkRepeatBackground a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ===================== Portfolio Cards ===================== */
+.card {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #111;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+  transition:
+    transform 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 0.4s ease,
+    filter 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.card img {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card-body {
+  transition: background-color 0.5s ease;
+}
+
+.card h4.card-title {
+  color: #fff;
+  font-weight: 700;
+}
+
+.card h5 {
+  color: #bbb;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.card p {
+  color: #ccc;
+}
+
+/* --- Hover / Focus --- */
+.card:hover,
+.card:focus-within {
+  transform: translateY(-14px) scale(1.045);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow:
+    0 28px 60px rgba(0,0,0,0.65),
+    0 0 0 1px rgba(255,255,255,0.20),
+    0 0 22px rgba(255,255,255,0.10);
+  filter: brightness(1.05);
+  z-index: 5;
+}
+
+.card:hover img,
+.card:focus-within img {
+  transform: scale(1.06);
+  opacity: 0.90;
+  filter: contrast(1.08) brightness(1.06) saturate(0);
+}
+
+.card:hover .card-body,
+.card:focus-within .card-body {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.card:hover .card-title,
+.card:focus-within .card-title {
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+/* --- Spotlight & Sheen --- */
+.card::after,
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.card::after {
+  background: radial-gradient(
+    120% 70% at 50% 0%,
+    rgba(255,255,255,0.22) 0%,
+    rgba(255,255,255,0.10) 30%,
+    rgba(255,255,255,0.03) 55%,
+    transparent 70%
+  );
+  transform: translateZ(0);
+}
+
+.card::before {
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255,255,255,0.12) 45%,
+    rgba(255,255,255,0.22) 50%,
+    rgba(255,255,255,0.12) 55%,
+    transparent 100%
+  );
+  transform: translateX(-30%);
+}
+
+.card:hover::after,
+.card:focus-within::after {
+  opacity: 1;
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  opacity: 1;
+  transform: translateX(30%);
+}
+
+/* --- Hover Animation --- */
+.card:hover {
+  animation: cardGlowFade 0.4s ease-in-out;
+}
+
+@keyframes cardGlowFade {
+  0% {
+    box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+  }
+  100% {
+    box-shadow:
+      0 28px 60px rgba(0,0,0,0.65),
+      0 0 0 1px rgba(255,255,255,0.20),
+      0 0 22px rgba(255,255,255,0.10);
+  }
+}
+
+/* ===================== Navbar ===================== */
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #ddd;
+}
+
+/* ===================== Buttons ===================== */
+.btn-light {
+  background-color: #f0f0f0;
+  color: #111;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-light:hover,
+.btn-light:focus {
+  background-color: #fff;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.25);
+}
+
+/* ===================== Accessibility ===================== */
+.card a:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px #000 inset,
+    0 0 0 3px #fff;
+  border-radius: 0.25rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #f2f2f2;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(255,255,255,0.3);
+  color: #111;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 576px) {
+  .form-control { font-size: 16px; }
+  .row.m-5 { margin: 1.5rem !important; }
+  .row .col { margin-top: 1rem !important; }
+}
+
+/* Optional: uniform thumbnail crop */
+/*
+.card-img-top {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+*/
+
+/* ===================== Reduced Motion ===================== */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card img,
+  .card-body {
+    transition: none;
+  }
+  .card:hover,
+  .card:focus-within {
+    transform: none;
+  }
+  .card::before,
+  .card::after {
+    transition: opacity 0.01s linear;
+  }
 }
