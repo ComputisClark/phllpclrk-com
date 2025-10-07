@@ -306,3 +306,28 @@ textarea:focus-visible {
     transition: opacity 0.01s linear;
   }
 }
+
+/* === Tile text rhythm: consistent line counts + balanced rags === */
+
+/* Keep cards equal height and push the button to the bottom */
+.card { height: 100%; }
+.card .card-body { display: flex; flex-direction: column; }
+.card .btn { margin-top: auto; }
+
+/* Balance headings (modern browsers) */
+.card .card-title,
+.card h5,
+header .fs-4 {
+  text-wrap: balance;        /* safe to ignore if unsupported */
+}
+
+/* Clamp body copy to exactly 3 lines (tweak to 2 or 4 if you prefer) */
+.card .card-text {
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;      /* WebKit/Blink */
+  line-clamp: 3;               /* Spec */
+  overflow: hidden;
+  min-height: calc(1.4em * 3); /* reserve the space so rows align */
+}
