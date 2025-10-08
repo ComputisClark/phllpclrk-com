@@ -6,6 +6,19 @@
 
 $projects = [
 
+  // === 2025 ===
+  [
+    'title'    => 'Computis TV Dashboard',
+    'img'      => 'images/ComputisTV.png',
+    'alt'      => 'Computis TV dashboard interface',
+    'url'      => 'https://www.computis.us/tv/index.html',
+    'desc'     => 'Custom-built home TV interface designed to replace default smart-TV menus. Integrates a local weather API, live flight tracker, and focused Google Search input for instant use, built for speed and simplicity on the big screen.',
+    'button'   => 'View Demo',
+    'external' => true,
+    'year'     => 2025,
+    'month'    => 2,
+  ],
+
   // === 2024 ===
   [
     'title'    => 'Computis',
