@@ -1,0 +1,28 @@
+# ==============================================
+# phllpclrk.com Git Ignore
+# Keeps sensitive or unnecessary files private
+# ==============================================
+
+# OS & system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+error_log
+
+# Local environment / config
+.env
+/config/
+/private/
+/vendor/
+
+# Dependency managers (future-proofing)
+composer.lock
+node_modules/
+package-lock.json
+
+# IDE/editor metadata
+.vscode/
+.idea/
+*.swp
