@@ -276,3 +276,14 @@ textarea:focus-visible {
 header .fs-4 { max-width: 66ch; margin-inline: auto; text-wrap: balance; }
 /* Card text readability */
 .card .card-text { line-height: 1.45; text-wrap: balance; }
+
+
+.card--offline { opacity: 0.7; filter: grayscale(20%); }
+.card-media-wrap { position: relative; }
+.badge-offline {
+  position: absolute; top: 8px; left: 8px;
+  background: rgba(255,255,255,0.15); color: #fff;
+  font-size: 12px; letter-spacing: .5px; text-transform: uppercase;
+  padding: 4px 8px; border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px; backdrop-filter: blur(2px); pointer-events: none;
+}
