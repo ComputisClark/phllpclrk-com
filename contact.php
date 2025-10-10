@@ -1,6 +1,6 @@
 <?php
-// Contact.php – Phillip Clark
-// Simple contact form with basic validation and mail() hardening
+// contact.php — Phillip Clark
+// Simple contact form with basic validation + mail() hardening
 
 $pageTitle = 'Contact – Phillip Clark';
 $pageDesc  = 'Get in touch for WordPress builds, performance/SEO, and site support.';
@@ -12,7 +12,7 @@ include 'header.php';
 // ---------------------
 $responses = [];
 
-// Simple honeypot (bots fill this; humans won’t)
+// Honeypot (bots fill this; humans won’t)
 $honeypot = $_POST['website'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($honeypot !== '') {
     $responses[] = 'Message could not be sent.';
   } else {
-    // Validate fields
+    // Validate
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $responses[] = 'Email is not valid.';
     }
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $responses[] = 'Please complete all fields.';
     }
 
-    // Header injection guard: strip newlines from email/subject
+    // Header injection guard
     $email   = str_replace(["\r", "\n"], '', $email);
     $subject = str_replace(["\r", "\n"], '', $subject);
 
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!$responses) {
-      $to   = 'phllpclrk@gmail.com';
-      $from = 'noreply@phllpclrk.com';
+      $to   = 'phllpclrk@gmail.com';     // <- your inbox
+      $from = 'noreply@phllpclrk.com';   // <- domain-validated sender
 
       // Build plain-text body
       $bodyLines = [
@@ -55,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg
       ];
       $message = implode("\r\n", $bodyLines);
-      // Wrap long lines for RFC 2822
       $message = wordwrap($message, 70, "\r\n");
 
       // Headers
@@ -76,51 +75,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!-- Page Content -->
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-      <h1 class="text-center mb-4">Contact Me</h1>
+<div class="container py-5 container-narrow">
+  <div class="panel panel--soft">
+    <h1 class="text-center mb-4">Contact Me</h1>
 
-      <?php if ($responses): ?>
-        <div class="mb-3">
-          <?php foreach ($responses as $r): ?>
-            <div class="alert <?= stripos($r, 'sent') !== false ? 'alert-success' : 'alert-warning' ?>" role="alert">
-              <?= htmlspecialchars($r) ?>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      <?php endif; ?>
+    <?php if ($responses): ?>
+      <div class="mb-3">
+        <?php foreach ($responses as $r): ?>
+          <?php $ok = (stripos($r, 'sent') !== false); ?>
+          <div class="alert <?= $ok ? 'alert-success' : 'alert-warning' ?>" role="alert" aria-live="polite">
+            <?= htmlspecialchars($r) ?>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php endif; ?>
 
-      <form class="contact" method="post" action="">
-        <!-- Honeypot field (hidden from users) -->
-        <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
-          <label for="website">Leave this field empty</label>
-          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-        </div>
+    <form class="contact" method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" novalidate>
+      <!-- Honeypot field (hidden from users) -->
+      <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
+        <label for="website">Leave this field empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Your Email</label>
-          <input class="form-control" id="email" type="email" name="email" placeholder="you@example.com" required>
-        </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Your Email</label>
+        <input class="form-control" id="email" type="email" name="email"
+               placeholder="you@example.com" autocomplete="email" required>
+      </div>
 
-        <div class="mb-3">
-          <label for="name" class="form-label">Your Name</label>
-          <input class="form-control" id="name" type="text" name="name" placeholder="Your Name" required>
-        </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Your Name</label>
+        <input class="form-control" id="name" type="text" name="name"
+               placeholder="Your name" autocomplete="name" required>
+      </div>
 
-        <div class="mb-3">
-          <label for="subject" class="form-label">Subject</label>
-          <input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" required>
-        </div>
+      <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input class="form-control" id="subject" type="text" name="subject"
+               placeholder="Subject" autocomplete="off" required>
+      </div>
 
-        <div class="mb-3">
-          <label for="msg" class="form-label">Message</label>
-          <textarea class="form-control" id="msg" name="msg" rows="6" placeholder="How can I help?" required></textarea>
-        </div>
+      <div class="mb-3">
+        <label for="msg" class="form-label">Message</label>
+        <textarea class="form-control" id="msg" name="msg" rows="7"
+                  placeholder="How can I help?" required></textarea>
+      </div>
 
-<button type="submit" class="submit">Send Message</button>
-      </form>
-    </div>
+      <button type="submit" class="submit">Send Message</button>
+    </form>
   </div>
 </div>
 
