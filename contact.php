@@ -1,15 +1,12 @@
 <?php
 // contact.php — Phillip Clark
-// Simple contact form with basic validation + mail() hardening
+// Contact form with basic validation, hCaptcha, and mail() hardening
 
 $pageTitle = 'Contact – Phillip Clark';
-$pageDesc  = 'Get in touch for WordPress builds, performance/SEO, and site support.';
+$pageDesc  = 'Get in touch for web builds, performance/SEO, and site support.';
 $ogImage   = '/assets/og-contact.jpg';
 include 'header.php';
 
-// ---------------------
-// Form handling
-// ---------------------
 $responses = [];
 
 // Honeypot (bots fill this; humans won’t)
@@ -20,12 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $subject = trim($_POST['subject'] ?? '');
   $name    = trim($_POST['name']    ?? '');
   $msg     = trim($_POST['msg']     ?? '');
+  $captcha = $_POST['h-captcha-response'] ?? '';
 
-  // Honeypot check
   if ($honeypot !== '') {
     $responses[] = 'Message could not be sent.';
   } else {
-    // Validate
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $responses[] = 'Email is not valid.';
     }
@@ -33,20 +29,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $responses[] = 'Please complete all fields.';
     }
 
-    // Header injection guard
+    // hCaptcha verification
+    if (empty($captcha)) {
+      $responses[] = 'Please complete the captcha.';
+    } else {
+      $secret = 'SecretKeyEnterHere';
+      $verifyResponse = file_get_contents("https://hcaptcha.com/siteverify?secret={$secret}&response={$captcha}&remoteip=" . $_SERVER['REMOTE_ADDR']);
+      $captchaSuccess = json_decode($verifyResponse);
+      if (empty($captchaSuccess->success)) {
+        $responses[] = 'Captcha verification failed. Please try again.';
+      }
+    }
+
+    // Strip header injection
     $email   = str_replace(["\r", "\n"], '', $email);
     $subject = str_replace(["\r", "\n"], '', $subject);
 
-    // Keep subject sane length
     if (mb_strlen($subject) > 150) {
       $subject = mb_substr($subject, 0, 150) . '…';
     }
 
     if (!$responses) {
-      $to   = 'phllpclrk@gmail.com';     // <- your inbox
-      $from = 'noreply@phllpclrk.com';   // <- domain-validated sender
+      $to   = 'phllpclrk@gmail.com';
+      $from = 'noreply@phllpclrk.com';
 
-      // Build plain-text body
       $bodyLines = [
         "Name: {$name}",
         "Email: {$email}",
@@ -54,10 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "",
         $msg
       ];
-      $message = implode("\r\n", $bodyLines);
-      $message = wordwrap($message, 70, "\r\n");
+      $message = wordwrap(implode("\r\n", $bodyLines), 70, "\r\n");
 
-      // Headers
       $headers  = 'From: ' . $from . "\r\n";
       $headers .= 'Reply-To: ' . $email . "\r\n";
       $headers .= "MIME-Version: 1.0\r\n";
@@ -73,6 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 ?>
+
+<!-- Load hCaptcha -->
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
 <!-- Page Content -->
 <div class="container py-5 container-narrow">
@@ -91,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form class="contact" method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" novalidate>
-      <!-- Honeypot field (hidden from users) -->
+      <!-- Honeypot -->
       <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
         <label for="website">Leave this field empty</label>
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -120,6 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <textarea class="form-control" id="msg" name="msg" rows="7"
                   placeholder="How can I help?" required></textarea>
       </div>
+
+      <!-- hCaptcha widget -->
+      <div class="h-captcha mb-3" data-sitekey="siteKeyEnterHere" data-theme="dark"></div>
 
       <button type="submit" class="submit">Send Message</button>
     </form>
