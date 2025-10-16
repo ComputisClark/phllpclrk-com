@@ -241,3 +241,60 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 .panel--soft { padding: 1.25rem; }
+
+/* hCaptcha: align with form width + spacing */
+form.contact .h-captcha {
+  display: flex;
+  justify-content: center;   /* centers the widget inside the form */
+  align-items: center;
+  width: 100%;
+  margin: 0 0 16px;
+}
+
+/* Make the widget visually consistent (subtle polish) */
+form.contact .h-captcha iframe {
+  border-radius: 8px;        /* matches inputs/buttons */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+/* Tighten spacing when stacked on small screens */
+@media (max-width: 576px) {
+  form.contact .h-captcha { margin-bottom: 12px; }
+}
+
+/* Ensure visible input text color */
+form.contact .form-control,
+form.contact .form-control:focus,
+form.contact textarea {
+  color: #f5f5f5 !important;
+  background-color: #000 !important;
+  caret-color: #f5f5f5; /* ensures cursor stays visible */
+}
+
+/* ——— Force visible input text in Chrome/Safari (typing + autofill) ——— */
+form.contact .form-control,
+form.contact textarea {
+  color: #f5f5f5 !important;
+  background-color: #000 !important;
+  caret-color: #f5f5f5 !important;
+  -webkit-text-fill-color: #f5f5f5;   /* Chrome/Safari typing color */
+}
+
+/* Autofill states (email/name/subject/message) */
+form.contact input.form-control:-webkit-autofill,
+form.contact textarea.form-control:-webkit-autofill,
+form.contact input.form-control:-webkit-autofill:focus,
+form.contact textarea.form-control:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f5f5f5 !important;   /* text color */
+  caret-color: #f5f5f5 !important;               /* cursor color */
+  box-shadow: 0 0 0 1000px #000 inset !important;/* background stays dark */
+  -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
+  border-color: #555 !important;
+}
+
+/* iOS/Safari quirks */
+form.contact .form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  background-clip: padding-box; /* prevents odd overlay edges */
+}
